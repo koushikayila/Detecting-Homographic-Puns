@@ -4,7 +4,7 @@ import gensim
 from sklearn.linear_model import LogisticRegression
 from sklearn import datasets
 import spacy, fasttext
-
+import sys
 # model = gensim.models.Word2Vec.load_word2vec_format('/home/koushik/Desktop/NLP/FunWithPun-master/sample/GoogleNews-vectors-negative300.bin', binary=True)
 text = open('./test.txt','r');
 gold = open('./a.gold','r');
@@ -109,7 +109,7 @@ for i in labels:
     class_mean[i].append(np.mean(dattt,axis=0))
     class_var[i].append(np.var(dattt,axis=0))
 
-fp1 = open('./test_final1.txt')
+fp1 = open(sys.argv[1])
 
 test = fp1.readlines()
 
@@ -154,5 +154,4 @@ for s in test:
 if flag == 1:
     print('YES; the given context contains a pun')
 else:
-    print('NO; the given context does not contain a pun')
-
+print('NO; the given context does not contain a pun')
